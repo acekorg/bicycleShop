@@ -74,3 +74,8 @@ ALTER TABLE
     "PRODUCT" ADD CONSTRAINT product_type_check CHECK (productType IN ('BICYCLE'));
 ALTER TABLE
     "PART" ADD CONSTRAINT part_type_check CHECK (partType IN ('FRAME_TYPE', 'FRAME_FINISH', 'WHEELS', 'RIM_COLOR', 'CHAIN'));
+
+-- Search optimizations
+
+-- Table PART_COMBINATIONS_INVALIDITY is always searched by productId.
+CREATE INDEX idx_part_combination_product_id ON customers (productId);

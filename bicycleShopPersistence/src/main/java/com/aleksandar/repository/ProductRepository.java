@@ -18,7 +18,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
      * @param productId Product ID
      * @return Product with all its possible parts
      */
-    @Query(value = "SELECT * FROM PRODUCT p LEFT JOIN PART pr ON p.id = pr.productId WHERE p.id = :productId",
+    @Query(value = "SELECT * FROM PRODUCT p LEFT JOIN PRODUCT_PART pp ON p.id = pp.productId LEFT JOIN  ON PART pr ON pp.partId = pr.id WHERE p.id = :productId",
             nativeQuery = true)
     Product findProductWithPartsById(Long productId);
 
