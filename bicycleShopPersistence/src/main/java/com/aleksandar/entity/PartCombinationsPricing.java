@@ -1,4 +1,4 @@
-package com.aleksandar.model;
+package com.aleksandar.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +9,10 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
+/**
+ * PartCombinationsPricing entity.
+ * Spring data matches Java variables to database columns when they are the same.
+ */
 @Entity
 @Getter
 @Setter
@@ -18,8 +22,8 @@ public class PartCombinationsPricing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long firstPartId;
-    private Long secondPartId;
+    private Long mainPartId;
+    private Long pairedPartId;
     private Long productId;
     private BigDecimal surcharge;
 }

@@ -1,10 +1,14 @@
-package com.aleksandar.model;
+package com.aleksandar.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * Product entity.
+ * Spring data matches Java variables to database columns when they are the same.
+ */
 @Entity
 @Getter
 @Setter
@@ -19,6 +23,7 @@ public class Product {
     private String description;
     private String brand;
     private String model;
+    private int stock;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Part> parts;

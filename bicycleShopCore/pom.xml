@@ -18,4 +18,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <artifactId>bicycleShopPersistence</artifactId>
+            <groupId>com.aleksandar</groupId>
+        </dependency>
+    </dependencies>
 </project>
