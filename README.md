@@ -15,16 +15,16 @@ Tables and classes can be extended later if specific logic appears per product.
 
 > Here is an incomplete list of all the parts
 
-I will keep partType and productType enums so that I can limit the options. 
-It says "incomplete" list but I would discuss over this to have it fixed because if it's a free text input, it would be very prone to errors.
+I will keep `partType` and `productType` enums so that I can limit the options. 
+It says "incomplete" list but I would discuss over this to have fixed number of types because if it's a free text input, it would be very prone to errors.
 Usually after having many products wording and case inconsistencies appear and data consistency and integrity is broken.
 I have added constraints at the bottom of the SQL schema.
 
-In case PRODUCT TYPES or PART TYPES need to be fully admin-editable, then we should introduce tables for them respectively.
-Then when creating products or parts a type drop-down selection from these tables should be offered. And for editing the data in these tables separate UI in the admin panel
-should be created. But I didn't went in this direction at this point.
+ *In case PRODUCT TYPES or PART TYPES need to be fully admin-editable, then we should introduce tables for them respectively.
+Then when creating products or parts, a type drop-down selection from these tables should be offered. And for editing the data in these tables separate UI in the admin panel
+should be created. But I didn't went in this direction at this point.* 
 
-For the part name I assumed that free string input is fine because at this point there will be no querying done based on this field.
+For the part name I assumed that free string input is fine because at this point there will be no querying done based on this field anyway.
        
 > Some can be out of stock
 
@@ -47,7 +47,7 @@ It doesn't make sense to call the backend on each reconfiguration on the Product
 I decided to use relational database.\
 \
 Schema: [sql-schema.sql](./bicycleShopPersistence/src/main/resources/sql-schema.sql)
-![plot](./bicycleShopPersistence/src/main/resources/schemaDiagram.png)\
+![plot](./bicycleShopPersistence/src/main/resources/schemaDiagram.png)
 
 #### Non-relational database opinion:
 I have thought about using NoSQL database as price customizations and part validations can be easily stored in document format. But given 
@@ -55,7 +55,7 @@ that different models of bicycles may have same parts, colors I'm afraid lot of 
 
 
 ## 2. Main user actions
-It's an e-commerce website with the following actions.\
+It's an e-commerce website with the following actions.
 
 Users with regular accounts can access classic e-commerce site website
 1. Overview of products where we list all items from PRODUCT table
