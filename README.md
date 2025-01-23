@@ -73,6 +73,9 @@ parts from previous step. With the set of invalid part combinations we can valid
 - Part combinations surcharges so that we can increase the price if the user selection of parts appears in PART_COMBINATIONS_PRICING as main and paired part.
 Price increase will be calculated on the frontend.
 
+For illustrational purposes I added one price calculation on the backend since I'm not implementing a frontend.
+Code available here: [UserService.java#L34](./bicycleShopCore/src/main/java/com/aleksandar/core/service/UserService.java#L34)
+
 ## 4. Add to cart action
 There should ber CART and CART_ITEMS tables created.
 
@@ -135,7 +138,15 @@ table which allows specific customization of price per certain product. This way
 Same applies to PART_COMBINATIONS_INVALIDITY as well. If for Bike #1 you can't add "fat bike wheels" and "red rim color" because the manufacturer doesn't provide it, for Bike #2 the admin can allow this independently.
 
 
-## Technical points
+## Important Technical points
 
 - Custom @Query definitions aren't always needed in Spring Data but I added them just to illustrate the ideas. Especially in 
 the many-to-many relation here: [ProductRepository.java#L21](./bicycleShopPersistence/src/main/java/com/aleksandar/repository/ProductRepository.java#L21)
+
+- I haven't created all the necessary services in the Core module to support all above-mentioned workflows. Created some more important ones for illustrational purposes.
+The rest are more or less based on CRUD operations towards the respective tables.
+                                      
+- Another point that I noticed is that, this approach with too many customizations of prices for parts combinations isn't very maintainable from administrative perspective.
+If shop grows large and has thousands of products and parts there will be lots of admin work which implicates administrative expenses to engage people in the business.
+My suggested solution would be to think about a scoring system or maybe a t-shirt size input parameter for parts that increases price for certain percentage so that not for every combination, surcharge needs to be entered separately.
+But such change needs to be discussed with the client as it would affect the requirements of adding custom price by admin's wish :)
